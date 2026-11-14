@@ -478,23 +478,23 @@ const MAT = {
   kast: { hp: 170, dens: .003, rest: .05, pts: 300 }, tnt: { hp: 12, dens: .0009, rest: .2, pts: 200 },
 };
 const LEVELS = [
-  { naam: 'Kerstdorp', shots: ['dino', 'dino', 'dino'], s2: 4500, s3: 7000,
+  { naam: 'Kerstdorp', shots: ['dino', 'dino', 'dino'], s2: 3000, s3: 5000,
     blocks: [['ijs', 1010, 550, 24, 100], ['ijs', 1090, 550, 24, 100], ['hout', 1050, 490, 130, 20]], coals: [[1050, 578], [1050, 458]], cols: [[600, 330], [790, 290], [935, 350]] },
-  { naam: 'Dennenbos', shots: ['dino', 'rendier', 'dino'], s2: 5000, s3: 7500,
+  { naam: 'Dennenbos', shots: ['dino', 'rendier', 'dino'], s2: 3500, s3: 5500,
     blocks: [['hout', 980, 555, 24, 90], ['hout', 1060, 555, 24, 90], ['hout', 1020, 501, 130, 18], ['tnt', 1020, 578, 44, 44], ['tnt', 1140, 578, 44, 44], ['ijs', 1220, 550, 24, 100], ['ijs', 1300, 550, 24, 100], ['hout', 1260, 490, 130, 20]],
     coals: [[1020, 470], [1260, 458], [1260, 578]], cols: [[560, 300], [760, 240], [900, 330]] },
-  { naam: 'Bevroren meer', shots: ['dino', 'sneeuw', 'rendier'], s2: 5000, s3: 7500,
+  { naam: 'Bevroren meer', shots: ['dino', 'sneeuw', 'rendier'], s2: 4000, s3: 6000,
     rots: [[1150, 300, 300, 24]], pegels: [[1060, 347], [1150, 347], [1240, 347]],
     blocks: [['ijs', 1020, 565, 24, 70], ['ijs', 1100, 565, 24, 70], ['ijs', 1060, 522, 110, 16], ['ijs', 1200, 565, 24, 70], ['ijs', 1280, 565, 24, 70], ['ijs', 1240, 522, 110, 16]],
     coals: [[1060, 578], [1240, 578], [1150, 578], [1150, 266]], cols: [[600, 280], [850, 230], [1150, 440]] },
-  { naam: 'Noordpool', shots: ['dino', 'rendier', 'sneeuw', 'brein'], s2: 6000, s3: 9000,
+  { naam: 'Noordpool', shots: ['dino', 'rendier', 'sneeuw', 'brein'], s2: 4000, s3: 6000,
     blocks: [['hout', 950, 555, 24, 90], ['hout', 1010, 555, 24, 90], ['hout', 980, 501, 110, 18], ['cadeau', 1150, 575, 50, 50], ['cadeau', 1150, 525, 50, 50], ['kast', 1240, 545, 70, 110], ['ijs', 1310, 550, 24, 100], ['tnt', 1400, 578, 44, 44]],
     coals: [[980, 470], [1150, 478], [1240, 468], [1355, 578]], cols: [[560, 300], [770, 250], [1090, 330]] },
-  { naam: 'Werkplaats', shots: ['rendier', 'sneeuw', 'brein', 'dino'], s2: 6000, s3: 9000,
+  { naam: 'Werkplaats', shots: ['rendier', 'sneeuw', 'brein', 'dino'], s2: 4000, s3: 6000,
     rots: [[800, 330, 120, 20]],
     blocks: [['kast', 1040, 540, 60, 120], ['kast', 1340, 540, 60, 120], ['ijs', 1190, 560, 40, 80], ['hout', 1190, 470, 360, 20], ['ijs', 1100, 420, 24, 80], ['ijs', 1280, 420, 24, 80], ['tnt', 1190, 438, 44, 44], ['hout', 1190, 371, 220, 18]],
     coals: [[1125, 578], [1255, 578], [1190, 340], [800, 298]], cols: [[650, 230], [950, 330], [1190, 240]] },
-  { naam: 'Het fort', shots: ['dino', 'rendier', 'sneeuw', 'brein', 'brein'], s2: 7000, s3: 11000,
+  { naam: 'Het fort', shots: ['dino', 'rendier', 'sneeuw', 'brein', 'brein'], s2: 6500, s3: 8500,
     rots: [[820, 300, 110, 20]],
     blocks: [['ijs', 960, 550, 24, 100], ['kast', 1060, 540, 60, 120], ['kast', 1360, 540, 60, 120], ['hout', 1210, 470, 380, 20], ['tnt', 1100, 438, 44, 44], ['tnt', 1320, 438, 44, 44], ['ijs', 1170, 420, 24, 80], ['ijs', 1250, 420, 24, 80], ['hout', 1210, 371, 130, 18]],
     coals: [[1210, 552, 48], [1210, 340], [1000, 578], [820, 268]], cols: [[560, 280], [700, 220], [1210, 250]] },
@@ -502,6 +502,7 @@ const LEVELS = [
 const ONZIN = ['De aarde is plat!', 'Bron: vertrouw me', '2 + 2 = 5', 'Dat stond op internet', 'Pinguïns kunnen vliegen', 'Ik weet het 100% zeker', 'Kerst valt in juli', 'Rendieren bestaan niet'];
 const COLK = ['data', 'model', 'prompt'], COLC = { data: '#2F6FED', model: '#8E5BFF', prompt: '#FFC83D' };
 let prog = store.get('cerstc-prog', { best: [0, 0, 0, 0, 0, 0], stars: [0, 0, 0, 0, 0, 0] }); const tut = store.get('cerstc-tut', {});
+LEVELS.forEach((L, i) => { const b = prog.best[i] || 0; if (b > 0) prog.stars[i] = Math.max(prog.stars[i] || 0, b >= L.s3 ? 3 : b >= L.s2 ? 2 : 1); });
 
 /* ---------- natuurkunde ---------- */
 const M = window.Matter; let engine = null, g = null, acc = 0;
